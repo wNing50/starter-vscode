@@ -1,8 +1,10 @@
-import { defineExtension } from 'reactive-vscode'
+import { defineExtension, useActiveColorTheme, useIsDarkTheme, watchEffect } from 'reactive-vscode'
 import { window } from 'vscode'
 
-const { activate, deactivate } = defineExtension(() => {
-  window.showInformationMessage('Hello')
+export const { activate, deactivate } = defineExtension(() => {
+  const theme = useActiveColorTheme()
+  const isDark = useIsDarkTheme()
+  watchEffect(() => {
+    window.showInformationMessage(`Your theme is ${theme.value} (kind: ${isDark.value ? 'dark' : 'light'})`)
+  })
 })
-
-export { activate, deactivate }

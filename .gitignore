@@ -4,10 +4,5 @@
 *.log
 *.tgz
 *.vsix
-coverage
 dist
-lib-cov
-logs
 node_modules
-temp
-src/generated
