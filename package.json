@@ -1,12 +1,12 @@
 {
-  "publisher": "Nick Wu",
+  "publisher": "wNing50",
   "name": "starter-vscode-extension",
   "displayName": "",
   "version": "0.0.0",
   "private": true,
   "packageManager": "pnpm@10.4.1",
   "description": "",
-  "author": "",
+  "author": "Nick Wu",
   "license": "MIT",
   "homepage": "",
   "repository": {
