@@ -1,8 +1,17 @@
-# ext-name
+<p align='center'>
+    <img height="100" src="./assets/icon.png">
+</p>
 
-## Configurations
+## Description
 
-## Commands
+## Example
+<p align='center'>
+    <img height="350" src="./assets/example.gif">
+</p>
+
+## Config
+
+#### Config1
 
 ## License
 

@@ -1,9 +1,8 @@
 {
-  "publisher": "wNing50",
+  "publisher": "NickWu",
   "name": "ext-name",
   "displayName": "ext-name",
   "version": "0.0.0",
-  "private": true,
   "packageManager": "pnpm@10.4.1",
   "description": "",
   "author": "Nick Wu",
@@ -20,11 +19,11 @@
     "Other"
   ],
   "main": "./dist/index.js",
-  "icon": "icon.png",
+  "icon": "assets/icon.png",
   "files": [
     "LICENSE.md",
-    "dist/*",
-    "res/*"
+    "assets/icon.png",
+    "dist/*"
   ],
   "engines": {
     "vscode": "^1.97.0"
@@ -32,25 +31,39 @@
   "activationEvents": [
     "onStartupFinished"
   ],
+  "contributes": {
+    "configuration": {
+      "title": "ext-name"
+    }
+  },
   "scripts": {
-    "build": "tsdown src/index.ts --external vscode",
-    "dev": "nr build --watch --sourcemap",
-    "pack": "vsce package --no-dependencies",
-    "lint": "eslint .",
-    "publish": "vsce publish --no-dependencies",
-    "typecheck": "tsc --noEmit",
-    "release": "bumpp && nr publish"
+    "build": "tsdown --config ./tsdown.build.config.ts",
+    "dev": "tsdown",
+    "pack": "gulp --require node_modules/@esbuild-kit/cjs-loader -f ./gulp/pack.ts",
+    "lint": "eslint . --fix",
+    "publish": "gulp --require node_modules/@esbuild-kit/cjs-loader -f ./gulp/publish.ts",
+    "release": "bumpp && pnpm run publish",
+    "husky": "husky"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^4.2.1",
+    "@esbuild-kit/cjs-loader": "^2.4.4",
+    "@types/gulp": "^4.0.17",
     "@types/node": "^22.13.4",
     "@types/vscode": "^1.97.0",
-    "@vscode/vsce": "^3.2.2",
+    "@vscode/vsce": "^3.4.2",
     "bumpp": "^10.0.3",
     "eslint": "^9.20.1",
+    "find-up": "^7.0.0",
+    "gulp": "^5.0.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.0.0",
     "pnpm": "^10.10.0",
     "reactive-vscode": "^0.2.10",
     "tsdown": "^0.9.6",
     "typescript": "^5.7.3"
+  },
+  "lint-staged": {
+    "*.{js,ts,json}": "eslint --fix"
   }
 }
